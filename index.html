@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chaitra Dhake Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Caveat:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--wine:#5e2229;--cream:#fff9ee;--blush:#e8c9c3;--ink:#56232a}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;width:100%;font-family:"Work Sans",sans-serif;font-size:17px;line-height:1.65;color:var(--ink);background:var(--cream)}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--blush);outline-offset:5px}
+    header{position:sticky;top:0;z-index:50;background:var(--wine)}
+    .wine,.cream{position:relative;isolation:isolate}
+    .wine{background:var(--wine);color:var(--cream)}
+    .cream{background:var(--cream);color:var(--wine)}
+    .wine::before,.cream::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.18;background-image:url("https://www.transparenttextures.com/patterns/natural-paper.png")}
+    .page-width{width:min(100% - 44px,1180px);margin-inline:auto}
+    .section-pad{padding:112px 0 126px}
+    .ripple-bottom{margin-bottom:22px}
+    .ripple-bottom::after{content:"";position:absolute;left:0;right:0;bottom:-21px;height:23px;background:radial-gradient(circle at 23px 0,var(--edge) 22px,transparent 23px) 0 0/46px 23px repeat-x;z-index:3}
+    .wine.ripple-bottom{--edge:var(--wine)}.cream.ripple-bottom{--edge:var(--cream)}
+    .headline{font-family:Montserrat,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.065em;line-height:.96}
+    .hero-title{font-size:clamp(48px,8.1vw,110px)!important;overflow-wrap:anywhere}
+    .section-title{font-size:clamp(38px,5.5vw,64px)!important;max-width:100%;overflow-wrap:anywhere}
+    .script{font-family:Caveat,cursive;font-weight:600;line-height:1.1}
+    .script-subtitle{font-size:32px!important}
+    .eyebrow{font-family:Montserrat,sans-serif;font-weight:800;letter-spacing:.19em;text-transform:uppercase;font-size:12px}
+    .outline-card{border:1px solid currentColor;border-radius:26px}
+    .light-card{background:#fffaf0;color:var(--wine);border-color:#dabdb5}
+    .dark-card{background:#713239;color:var(--cream);border-color:#a86d70}
+    .pill{border-radius:999px;border:1px solid currentColor;padding:11px 19px;display:inline-flex;align-items:center;justify-content:center;text-align:center;font-weight:600;font-size:14px;line-height:1.25}
+    .mock-screen{border:2px solid currentColor;border-radius:15px;padding:10px;background:rgba(255,249,238,.05)}
+    .mock-inner{border:1px dashed currentColor;border-radius:7px;display:grid;place-items:center;min-height:155px;text-align:center;padding:15px;opacity:.8}
+    .star{display:inline-block;font-size:1.65rem;line-height:1;color:var(--blush);animation:twinkle 7s ease-in-out infinite}
+    .nav-link{font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:.13em;white-space:nowrap;position:relative;text-decoration:none}
+    .nav-link:not(.contact-pill)::after{content:"";position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:var(--blush);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    .nav-link:not(.contact-pill):hover::after,.nav-link:not(.contact-pill):focus-visible::after{transform:scaleX(1)}
+    .contact-pill,.action-pill{transition:transform .3s,background-color .3s,box-shadow .3s,color .3s}
+    .contact-pill:hover,.contact-pill:active{transform:scale(1.06)}
+    .action-pill:hover,.action-pill:active{background:var(--blush)!important;color:var(--wine)!important;transform:scale(1.05);box-shadow:0 0 25px rgba(232,201,195,.42)}
+    .lift-card{transition:transform .3s,box-shadow .3s,border-color .3s}
+    .lift-card:hover,.lift-card:active{transform:translateY(-8px) scale(1.02);box-shadow:0 16px 32px rgba(42,13,18,.17);border-color:var(--blush)}
+    .tag-hover{transition:transform .3s,background-color .3s,color .3s}
+    .tag-hover:hover,.tag-hover:active{transform:translateY(-4px);background:var(--blush)!important;color:var(--wine)!important}
+    .frame-hover{transition:transform .3s}
+    .frame-hover:hover,.frame-hover:active{transform:rotate(1deg) scale(1.02)}
+    .monogram-float{animation:float 6s ease-in-out infinite;transition:box-shadow .3s}
+    .monogram-float:hover{animation:float 6s ease-in-out infinite,pulse 2s ease-in-out infinite}
+    .ribbon-track{width:max-content;display:flex;animation:marquee 32s linear infinite}
+    .ribbon-copy{flex:none;padding-right:2rem;font-weight:800;letter-spacing:.13em;white-space:nowrap}
+    .reveal-section,.reveal-item{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+    .reveal-section.in-view,.reveal-item.in-view{opacity:1;transform:translateY(0)}
+    .reveal-item{transition-delay:var(--reveal-delay,0ms)}
+    #back-to-top{position:fixed;bottom:22px;right:22px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid var(--blush);background:var(--cream);color:var(--wine);box-shadow:0 5px 18px rgba(42,13,18,.2);font-size:25px;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,transform .3s,visibility .3s}
+    #back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+    #back-to-top:hover{transform:translateY(-4px)}
+    @keyframes float{50%{transform:translateY(-12px)}}
+    @keyframes pulse{50%{box-shadow:0 0 0 12px rgba(232,201,195,.15),0 24px 40px rgba(0,0,0,.2)}}
+    @keyframes twinkle{50%{transform:rotate(35deg) scale(.8);opacity:.55}}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    @media(max-width:700px){
+      .section-pad{padding:76px 0 90px}.page-width{width:min(100% - 32px,1180px)}
+      .nav-links{gap:12px!important;justify-content:center}
+      .hero-title{font-size:clamp(40px,10vw,48px)!important}
+      .section-title{font-size:clamp(36px,9vw,48px)!important}
+      .ribbon-copy{font-size:13px!important}
+      .monogram-float{animation-duration:9s}.star{animation-duration:10s}
+      .reveal-section,.reveal-item{transition-duration:.4s;transform:translateY(10px)}
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+</head>
+<body>
+  <header class="wine">
+    <nav class="page-width flex flex-wrap items-center justify-center gap-x-7 gap-y-4 py-6 nav-links" aria-label="Portfolio sections">
+      <a class="nav-link" href="#about" style="color: rgb(255, 249, 238);">ABOUT</a>
+      <a class="nav-link" href="#skills" style="color: rgb(255, 249, 238);">SKILLS</a>
+      <a class="nav-link" href="#projects" style="color: rgb(255, 249, 238);">PROJECTS</a>
+      <a class="nav-link" href="#seo" style="color: rgb(255, 249, 238);">SEO</a>
+      <a class="nav-link" href="#social" style="color: rgb(255, 249, 238);">SOCIAL MEDIA</a>
+      <a class="nav-link contact-pill rounded-full px-5 py-3" style="background: rgb(255, 249, 238); color: rgb(94, 34, 41);" href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="wine ripple-bottom pt-12 pb-28 md:pt-20 md:pb-36 reveal-section" aria-labelledby="hero-title">
+      <div class="page-width text-center">
+        <h1 id="hero-title" class="headline hero-title" style="color: rgb(255, 249, 238);">DIGITAL MARKETING</h1>
+        <p class="script mt-4" style="font-size: 44px; color: rgb(255, 249, 238);">by Chaitra Dhake</p>
+        <div class="mx-auto my-10 md:my-14 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 md:gap-8">
+          <p class="eyebrow md:text-right" style="color: rgb(255, 249, 238); font-size: 17px;">MCA GRADUATE</p>
+          <div class="monogram-float w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] rounded-full mx-auto flex items-center justify-center relative shadow-2xl" style="background:#fff9ee;color:#5e2229">
+            <span class="script" style="font-size: 90px; color: rgb(94, 34, 41);">CD</span>
+            <span class="star absolute top-11 right-10" aria-hidden="true">✦</span>
+          </div>
+          <p class="eyebrow md:text-left" style="color: rgb(255, 249, 238); font-size: 17px;">DIGITAL MARKETING ENTHUSIAST</p>
+        </div>
+        <p class="script" style="font-size: 20px; color: rgb(255, 249, 238);">SEO | Website Management | Content Creation</p>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="wine ripple-bottom section-pad reveal-section" aria-labelledby="about-title">
+      <div class="page-width">
+        <div class="text-center mb-12">
+          <svg class="mx-auto w-full max-w-[620px] overflow-visible" viewBox="0 0 620 165" role="img" aria-label="ABOUT ME">
+            <defs><path id="about-arc" d="M 42 150 Q 310 -95 578 150"></path></defs>
+            <text fill="#fff9ee" font-family="Montserrat" font-weight="900" font-size="90" letter-spacing="-4">
+              <textPath id="about-title" href="#about-arc" startOffset="50%" text-anchor="middle">ABOUT ME</textPath>
+            </text>
+          </svg>
+          <span class="star" aria-hidden="true">✦</span>
+        </div>
+        <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-10 lg:gap-20 items-center">
+          <div class="space-y-7">
+            <div class="rounded-full w-56 h-56 mx-auto grid place-items-center border-2 border-[#e8c9c3]" style="background: rgb(94, 34, 41);">
+              <span class="script" style="font-size: 90px; color: rgb(255, 249, 238);">CD</span>
+            </div>
+            <div class="outline-card dark-card lift-card p-7 space-y-3 reveal-item" style="background: rgb(113, 50, 57);">
+              <p style="color: rgb(255, 249, 238);">Pune, India</p>
+              <p style="color: rgb(255, 249, 238);">MCA Graduate</p>
+              <p style="color: rgb(255, 249, 238);">Focus: SEO, WordPress, Canva</p>
+              <a class="block underline underline-offset-4 break-all" href="https://linkedin.com/in/chaitradhake/" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 249, 238);">LinkedIn: linkedin.com/in/chaitradhake/</a>
+            </div>
+          </div>
+          <div class="space-y-5 leading-relaxed">
+            <h2 class="script mb-7" style="font-size: 32px; color: rgb(255, 249, 238);">Hi, I'm Chaitra!</h2>
+            <p style="color: rgb(255, 249, 238); font-size: 18px; line-height: 1.7;">I am an MCA graduate transitioning into Digital Marketing, with practical experience in website development, SEO activities and creative content creation.</p>
+            <p style="color: rgb(255, 249, 238); font-size: 18px; line-height: 1.7;">My experience includes working on business websites, conducting keyword research, implementing on-page SEO practices and creating visual content using Canva.</p>
+            <p style="color: rgb(255, 249, 238); font-size: 18px; line-height: 1.7;">I am currently expanding my knowledge of social media marketing, content strategy and digital analytics.</p>
+            <p style="color: rgb(255, 249, 238); font-size: 18px; line-height: 1.7;">I am interested in opportunities where I can combine my technical background with creativity and data-driven marketing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER RIBBON -->
+    <aside class="cream overflow-hidden py-7" aria-label="Portfolio topics">
+      <div class="ribbon-track" aria-hidden="true">
+        <p class="ribbon-copy" style="color: rgb(94, 34, 41); font-size: 17px;">SEO • WEBSITES • CONTENT • CANVA • SEO • WEBSITES • CONTENT • CANVA • SEO • WEBSITES • CONTENT • CANVA</p>
+        <p class="ribbon-copy" style="color: rgb(94, 34, 41); font-size: 17px;">SEO • WEBSITES • CONTENT • CANVA • SEO • WEBSITES • CONTENT • CANVA • SEO • WEBSITES • CONTENT • CANVA</p>
+      </div>
+    </aside>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="cream ripple-bottom section-pad reveal-section" aria-labelledby="skills-title">
+      <div class="page-width">
+        <h2 id="skills-title" class="headline section-title" style="color: rgb(94, 34, 41); font-size: 42px;">SKILLS &amp; TOOLS</h2>
+        <p class="script script-subtitle mt-3 mb-12" style="color: rgb(94, 34, 41);">What I work with</p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <article class="outline-card light-card lift-card reveal-item p-7" style="background: rgb(255, 250, 240);">
+            <h3 class="font-bold mb-5 text-2xl" style="color: rgb(94, 34, 41);">SEO &amp; Website Optimization</h3>
+            <div class="space-y-2">
+              <p>Keyword Research</p>
+              <p>On-page SEO</p>
+              <p>Meta Title &amp; Description Optimization</p>
+              <p>Website Content Optimization</p>
+              <p>Basic SEO Auditing</p>
+            </div>
+          </article>
+          <article class="outline-card light-card lift-card reveal-item p-7" style="background: rgb(255, 250, 240);">
+            <h3 class="font-bold mb-5 text-2xl" style="color: rgb(94, 34, 41);">Website Management</h3>
+            <div class="space-y-2">
+              <p>WordPress</p>
+              <p>Elementor</p>
+              <p>Website Content Management</p>
+              <p>Website Page Creation</p>
+            </div>
+          </article>
+          <article class="outline-card light-card lift-card reveal-item p-7" style="background: rgb(255, 250, 240);">
+            <h3 class="font-bold mb-5 text-2xl" style="color: rgb(94, 34, 41);">Creative Content</h3>
+            <div class="space-y-2">
+              <p>Canva Graphic Design</p>
+              <p>Social Media Ad Creatives</p>
+              <p>Promotional Graphics &amp; Product Cards</p>
+              <p>Typography &amp; Layout Design</p>
+            </div>
+          </article>
+          <article class="outline-card light-card lift-card reveal-item p-7" style="background: rgb(255, 250, 240);">
+            <h3 class="font-bold mb-5 text-2xl" style="color: rgb(94, 34, 41);">Marketing Knowledge</h3>
+            <div class="space-y-2">
+              <p>Digital Marketing Fundamentals</p>
+              <p>Social Media Marketing Fundamentals</p>
+              <p>Content Strategy &amp; Marketing Funnels</p>
+            </div>
+          </article>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-9">
+          <span class="pill tag-hover">WordPress</span>
+          <span class="pill tag-hover">Elementor</span>
+          <span class="pill tag-hover">Semrush</span>
+          <span class="pill tag-hover">Canva</span>
+          <span class="pill tag-hover">Yoast SEO</span>
+          <span class="pill tag-hover">Google Search Console</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEBSITE PROJECT SECTION -->
+    <section id="projects" class="wine ripple-bottom section-pad reveal-section" aria-labelledby="projects-title">
+      <div class="page-width">
+        <h2 id="projects-title" class="headline section-title" style="color: rgb(255, 249, 238); font-size: 42px;">WEBSITE PROJECT</h2>
+        <p class="script script-subtitle mt-3 mb-12" style="color: rgb(255, 249, 238);">A website I've worked on</p>
+        <div class="grid grid-cols-1 gap-6">
+          <article class="outline-card dark-card lift-card reveal-item p-6 md:p-8 flex flex-col" style="background: rgb(113, 50, 57);">
+            <div class="mock-screen frame-hover mb-7">
+              <div class="mock-inner overflow-hidden p-0 h-[260px] bg-white rounded">
+                <img class="w-full h-full object-cover" loading="lazy" src="images/beyonli.png" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&auto=format&fit=crop&q=80'" alt="Beyonli Services Website Screenshot">
+              </div>
+            </div>
+            <h3 class="font-bold mb-3 text-2xl" style="color: rgb(255, 249, 238);">Business Website Development</h3>
+            <p class="mb-2"><strong>Project:</strong> Beyonli Services Website</p>
+            <p class="mb-2"><strong>Platform:</strong> WordPress</p>
+            <p class="mb-5"><strong>Tools:</strong> Elementor, Yoast SEO, Performance Optimization</p>
+            <p class="leading-relaxed mb-5" style="line-height: 1.7;">Worked on developing and managing a business website designed to present company services and provide visitors with streamlined business information.</p>
+            <div class="space-y-2 mb-7">
+              <p class="font-bold">My Contributions:</p>
+              <p>• Created and updated website pages using WordPress and Elementor.</p>
+              <p>• Organized website content, heading hierarchies, and page layouts.</p>
+              <p>• Implemented on-page SEO improvements and metadata configuration.</p>
+              <p>• Configured plugins to support website functionality and responsive loading.</p>
+            </div>
+            <a class="pill action-pill self-start mt-auto" href="https://beyonliservices.com/" target="_blank" rel="noopener noreferrer" style="background: rgb(255, 249, 238); color: rgb(94, 34, 41);">View Website ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO CASE STUDY SECTION -->
+    <section id="seo" class="cream ripple-bottom section-pad reveal-section" aria-labelledby="seo-title">
+      <div class="page-width">
+        <h2 id="seo-title" class="headline section-title" style="color: rgb(94, 34, 41); font-size: 42px;">SEO CASE STUDY</h2>
+        <p class="script script-subtitle mt-5">Business Website – SEO Optimization.</p>
+        <p class="mt-4 font-bold">Focus: Keyword Research &amp; On-Page SEO.</p>
+        <p class="font-bold mt-8 mb-2">Objective:</p>
+        <p class="max-w-3xl leading-relaxed" style="line-height: 1.7;">To improve website content relevance and search engine optimization through structured keyword research, click-through rate optimization, and on-page SEO best practices.</p>
+        
+        <h3 class="font-bold mt-10 mb-5 text-2xl" style="color: rgb(94, 34, 41);">Work Performed</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <p class="outline-card light-card lift-card reveal-item p-5" style="background: rgb(255, 250, 240);">Conducted keyword research to identify high-intent regional search terms.</p>
+          <p class="outline-card light-card lift-card reveal-item p-5" style="background: rgb(255, 250, 240);">Analysed keyword relevance and search intent mapped to services.</p>
+          <p class="outline-card light-card lift-card reveal-item p-5" style="background: rgb(255, 250, 240);">Rewrote page titles and meta descriptions for CTR optimization.</p>
+          <p class="outline-card light-card lift-card reveal-item p-5" style="background: rgb(255, 250, 240);">Audited website content and corrected heading tag structure (H1–H3).</p>
+          <p class="outline-card light-card lift-card reveal-item p-5" style="background: rgb(255, 250, 240);">Applied on-page SEO improvements and internal linking strategy.</p>
+        </div>
+        <p class="mt-8 font-semibold">Tools Used: Semrush, Yoast SEO, Google Sheets, Google Search Console.</p>
+
+        <!-- 4 FIXED CONTAINED IMAGE CARDS -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+          <!-- Box 1 -->
+          <div class="mock-screen frame-hover flex flex-col bg-white overflow-hidden rounded-xl border border-[#dabdb5] shadow-sm">
+            <div class="p-2 border-b border-[#dabdb5]/50 bg-[#fffaf0] text-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#5e2229]">Keyword Research</span>
+            </div>
+            <div class="p-2 flex-1 flex items-center justify-center bg-white min-h-[170px]">
+              <img src="images/keywords.png" alt="Keyword Research Spreadsheet" class="w-full h-auto max-h-[160px] object-contain rounded" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-gray-500 font-medium\'>Add images/keywords.png</span>'" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="mock-screen frame-hover flex flex-col bg-white overflow-hidden rounded-xl border border-[#dabdb5] shadow-sm">
+            <div class="p-2 border-b border-[#dabdb5]/50 bg-[#fffaf0] text-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#5e2229]">Meta Title &amp; SERP</span>
+            </div>
+            <div class="p-2 flex-1 flex items-center justify-center bg-white min-h-[170px]">
+              <img src="images/serp.png" alt="Google Search Result Card" class="w-full h-auto max-h-[160px] object-contain rounded" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-gray-500 font-medium\'>Add images/serp.png</span>'" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="mock-screen frame-hover flex flex-col bg-white overflow-hidden rounded-xl border border-[#dabdb5] shadow-sm">
+            <div class="p-2 border-b border-[#dabdb5]/50 bg-[#fffaf0] text-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#5e2229]">On-Page Structure</span>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-center items-start bg-white text-xs space-y-1.5 text-gray-700 min-h-[170px]">
+              <span class="font-bold text-[#5e2229]">Heading Structure</span>
+              <span class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px]">H1: Mahakali Tours &amp; Travels</span>
+              <span class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px] ml-2">H2: Weekend Trips near Pune</span>
+              <span class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px] ml-4">H3: Camping &amp; Rentals</span>
+              <span class="text-green-700 font-semibold mt-1">✔ Yoast Score: Good</span>
+            </div>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="mock-screen frame-hover flex flex-col bg-white overflow-hidden rounded-xl border border-[#dabdb5] shadow-sm">
+            <div class="p-2 border-b border-[#dabdb5]/50 bg-[#fffaf0] text-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#5e2229]">SEO Audit &amp; Score</span>
+            </div>
+            <div class="p-2 flex-1 flex items-center justify-center bg-white min-h-[170px]">
+              <img src="images/audit.png" alt="SEO Audit Score Card" class="w-full h-auto max-h-[160px] object-contain rounded" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-gray-500 font-medium\'>Add images/audit.png</span>'" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT & SOCIAL MEDIA (WITH 3 CREATIVE POSTS) -->
+    <section id="social" class="cream ripple-bottom section-pad reveal-section" aria-labelledby="content-title">
+      <div class="page-width">
+        <h2 id="content-title" class="headline section-title" style="color: rgb(94, 34, 41); font-size: 42px;">CONTENT &amp; SOCIAL MEDIA</h2>
+        <p class="script script-subtitle mt-4">Canva Social Graphics &amp; Content Design</p>
+        <p class="mt-5 max-w-2xl leading-relaxed">Designing high-converting social media creatives across fashion, lifestyle, and food niches using brand color harmony, typography hierarchies, and promotional tags.</p>
+        
+        <div class="flex flex-wrap gap-3 my-8">
+          <span class="pill tag-hover">Instagram Creative Posts</span>
+          <span class="pill tag-hover">Ad Creative &amp; Offers</span>
+          <span class="pill tag-hover">Product Launch Teasers</span>
+          <span class="pill tag-hover">Visual Storytelling</span>
+          <span class="pill tag-hover">Canva Design</span>
+        </div>
+
+        <!-- 3 Instagram Post Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <!-- Post 1: Fashion Sale -->
+          <article class="outline-card light-card lift-card p-4 flex flex-col bg-white shadow-sm border-[#dabdb5]">
+            <div class="overflow-hidden rounded-xl aspect-[4/5] bg-gray-50 mb-4 border border-[#dabdb5]/40 flex items-center justify-center">
+              <img src="images/post-fashion.png" alt="Ethnic Fashion 20% Off Instagram Post" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-gray-400\'>Add images/post-fashion.jpg</span>'" loading="lazy">
+            </div>
+            <h3 class="font-bold text-lg" style="color: rgb(94, 34, 41);">Festive Sale &amp; Promotional Post</h3>
+            <p class="text-xs text-gray-600 mt-1">Multi-image collage layout with voucher stamp badge and elegant serif typography.</p>
+            <span class="text-[11px] font-semibold text-[#5e2229] mt-3">Niche: Traditional Ethnic Wear / Retail</span>
+          </article>
+
+          <!-- Post 2: Jewelry Launch -->
+          <article class="outline-card light-card lift-card p-4 flex flex-col bg-white shadow-sm border-[#dabdb5]">
+            <div class="overflow-hidden rounded-xl aspect-[4/5] bg-gray-50 mb-4 border border-[#dabdb5]/40 flex items-center justify-center">
+              <img src="images/post-jewelry.png" alt="Jewelry Collection Coming Soon Post" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-gray-400\'>Add images/post-jewelry.jpg</span>'" loading="lazy">
+            </div>
+            <h3 class="font-bold text-lg" style="color: rgb(94, 34, 41);">New Collection Teaser</h3>
+            <p class="text-xs text-gray-600 mt-1">Minimalist luxury layout featuring vintage filigree borders and warm golden tones.</p>
+            <span class="text-[11px] font-semibold text-[#5e2229] mt-3">Niche: Jewelry &amp; Luxury Accessories</span>
+          </article>
+
+          <!-- Post 3: Bakery / Food -->
+          <article class="outline-card light-card lift-card p-4 flex flex-col bg-white shadow-sm border-[#dabdb5]">
+            <div class="overflow-hidden rounded-xl aspect-[4/5] bg-gray-50 mb-4 border border-[#dabdb5]/40 flex items-center justify-center">
+              <img src="images/post-bakery.png" alt="Baked Happiness Cookie Post" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-gray-400\'>Add images/post-bakery.jpg</span>'" loading="lazy">
+            </div>
+            <h3 class="font-bold text-lg" style="color: rgb(94, 34, 41);">Food &amp; Bakery Promotional Post</h3>
+            <p class="text-xs text-gray-600 mt-1">Gingham pattern background with custom arch photo masks and playful stamp badges.</p>
+            <span class="text-[11px] font-semibold text-[#5e2229] mt-3">Niche: Bakery &amp; Confectionery</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS (CLICKABLE WITH LIGHTBOX MODAL) -->
+    <section id="certifications" class="wine ripple-bottom section-pad reveal-section" aria-labelledby="cert-title">
+      <div class="page-width">
+        <h2 id="cert-title" class="headline section-title mb-4" style="color: rgb(255, 249, 238); font-size: 42px;">CERTIFICATIONS &amp; LEARNING</h2>
+        <p class="script script-subtitle mb-12" style="color: rgb(232, 201, 195);">Click on any certificate to inspect full credentials</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Cert 1: Semrush -->
+          <article class="outline-card dark-card lift-card reveal-item p-6 flex flex-col cursor-pointer transition hover:border-[#fff9ee]" style="background: rgb(113, 50, 57);" onclick="openCertModal('images/cert-semrush.png', 'Semrush SEO Certification')">
+            <div class="flex items-center justify-between mb-4">
+              <span class="star" aria-hidden="true">✦</span>
+              <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#5e2229] border border-[#dabdb5] text-[#e8c9c3]">Verified Credential ↗</span>
+            </div>
+            <div class="w-full h-36 bg-white/10 rounded-lg overflow-hidden flex items-center justify-center mb-4 border border-white/20 p-2">
+              <img src="images/cert-semrush.png" alt="Semrush Certificate Thumbnail" class="w-full h-full object-contain rounded" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-[#e8c9c3]\'>Click to preview Semrush Certificate</span>'">
+            </div>
+            <h3 class="font-bold text-2xl" style="color: rgb(255, 249, 238);">Semrush SEO Certification</h3>
+            <p class="mt-2 text-sm text-[#e8c9c3]">Keyword Research, Technical Audits, On-Page Optimization, and Search Analytics.</p>
+            <button type="button" class="mt-4 text-xs font-bold underline underline-offset-4 text-left text-white">Click to view full certificate 🔍</button>
+          </article>
+
+          <!-- Cert 2: HubSpot -->
+          <article class="outline-card dark-card lift-card reveal-item p-6 flex flex-col cursor-pointer transition hover:border-[#fff9ee]" style="background: rgb(113, 50, 57);" onclick="openCertModal('images/cert-hubspot.png', 'HubSpot Social Media Certification')">
+            <div class="flex items-center justify-between mb-4">
+              <span class="star" aria-hidden="true">✦</span>
+              <span class="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#5e2229] border border-[#dabdb5] text-[#e8c9c3]">Verified Credential ↗</span>
+            </div>
+            <div class="w-full h-36 bg-white/10 rounded-lg overflow-hidden flex items-center justify-center mb-4 border border-white/20 p-2">
+              <img src="images/cert-hubspot.png" alt="HubSpot Certificate Thumbnail" class="w-full h-full object-contain rounded" onerror="this.parentElement.innerHTML='<span class=\'text-xs text-[#e8c9c3]\'>Click to preview HubSpot Certificate</span>'">
+            </div>
+            <h3 class="font-bold text-2xl" style="color: rgb(255, 249, 238);">HubSpot Social Media Marketing</h3>
+            <p class="mt-2 text-sm text-[#e8c9c3]">Content Strategy, Audience Segmentation, Social Media Campaign Management.</p>
+            <button type="button" class="mt-4 text-xs font-bold underline underline-offset-4 text-left text-white">Click to view full certificate 🔍</button>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR CERTIFICATES -->
+  <div id="certModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeCertModal(event)">
+    <div class="relative bg-white rounded-2xl max-w-4xl w-full p-4 md:p-6 shadow-2xl flex flex-col items-center border border-gray-200" onclick="event.stopPropagation()">
+      <div class="w-full flex items-center justify-between pb-3 mb-2 border-b border-gray-200">
+        <h4 id="certModalTitle" class="font-bold text-lg text-[#5e2229]">Certificate Credential</h4>
+        <button type="button" onclick="closeCertModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center font-bold text-lg cursor-pointer">✕</button>
+      </div>
+      <div class="w-full max-h-[75vh] flex items-center justify-center overflow-auto p-2">
+        <img id="certModalImg" src="" alt="Certificate Full View" class="max-w-full max-h-[70vh] object-contain rounded shadow">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER: CENTERED WITHOUT QR CODE -->
+  <footer id="contact" class="wine section-pad pt-28 reveal-section" aria-labelledby="contact-title">
+    <div class="page-width text-center">
+      <div class="max-w-xl mx-auto space-y-4">
+        <h2 id="contact-title" class="headline section-title mb-6" style="color: rgb(255, 249, 238); font-size: 42px;">LET'S CONNECT</h2>
+        <p class="font-bold text-2xl">Chaitra Dhake</p>
+        <p class="text-lg text-[#e8c9c3]">Digital Marketing | SEO | Content Creation</p>
+        <p class="text-[#e8c9c3]">Pune, Maharashtra, India</p>
+        
+        <div class="pt-2 space-y-2">
+          <a class="block underline underline-offset-4 hover:text-[#e8c9c3] transition" href="https://linkedin.com/in/chaitradhake/" target="_blank" rel="noopener noreferrer">LinkedIn: linkedin.com/in/chaitradhake/</a>
+          <a class="block underline underline-offset-4 hover:text-[#e8c9c3] transition" href="mailto:chaitradhake21@gmail.com">Email: chaitradhake21@gmail.com</a>
+        </div>
+
+        <div class="pt-6">
+          <a class="pill action-pill" style="background: rgb(255, 249, 238); color: rgb(94, 34, 41);" href="https://linkedin.com/in/chaitradhake/" target="_blank" rel="noopener noreferrer">Say Hello ↗</a>
+        </div>
+      </div>
+
+      <p class="script mt-16 text-center" style="font-size: 32px; color: rgb(255, 249, 238);">Thank you for viewing my portfolio!</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+    // Modal Lightbox Functions
+    function openCertModal(imageSrc, title) {
+      const modal = document.getElementById('certModal');
+      const img = document.getElementById('certModalImg');
+      const modalTitle = document.getElementById('certModalTitle');
+      img.src = imageSrc;
+      modalTitle.textContent = title;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCertModal() {
+      const modal = document.getElementById('certModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCertModal();
+    });
+
+    // Reveal Animation on Scroll
+    (() => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const sections = document.querySelectorAll('.reveal-section');
+      sections.forEach(section => {
+        section.querySelectorAll('.reveal-item').forEach((item, index) => {
+          item.style.setProperty('--reveal-delay', `${Math.min(index, 6) * 85}ms`);
+        });
+      });
+      if ('IntersectionObserver' in window && !reduced.matches) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              entry.target.querySelectorAll('.reveal-item').forEach(item => item.classList.add('in-view'));
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px 80px 0px' });
+        sections.forEach(section => observer.observe(section));
+      } else {
+        sections.forEach(section => {
+          section.classList.add('in-view');
+          section.querySelectorAll('.reveal-item').forEach(item => item.classList.add('in-view'));
+        });
+      }
+      const topButton = document.getElementById('back-to-top');
+      const updateTopButton = () => topButton.classList.toggle('visible', window.scrollY > 500);
+      window.addEventListener('scroll', updateTopButton, { passive: true });
+      updateTopButton();
+      topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduced.matches ? 'instant' : 'smooth' }));
+    })();
+  </script>
+</body>
+</html>
